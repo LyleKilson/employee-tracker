@@ -1,9 +1,14 @@
 # employee-tracker
 Content Management Systems (CMS)
 
-Developers frequently have to create interfaces that make it easy for non-developers to view and interact with information stored in databases. These interfaces are called content management systems (CMS). Your challenge this week is to build a command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.
+## Summary 
+Developers frequently have to create interfaces that make it easy for non-developers to view and interact with information stored in databases. These interfaces are called content management systems (CMS). Employee Tacker is exactly that, a CMS. Employee Tracker allows businesses (users) to view and manage the departments, roles, and employees within their company via a versatile database.
 
-Because this application won’t be deployed, you’ll also need to create a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met. You’ll need to submit a link to the video and add it to the README of your project.
+## Powered By
+- MySQL 
+- Express.js
+- Javascript
+- Node.js
 
 User Story
 AS A business owner
