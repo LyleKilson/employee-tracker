@@ -2,13 +2,15 @@ const inquirer = require("inquirer");
 const mysql = require("mysql");
 const cTable = require("console.table");
 
-const connection = mysql.createConnection({
+const connection = mysql.createConnection(
+    {
   host: "localhost",
   port: 3306,
   user: "root",
-  password: "password",
+  password: "Winnipeg2012!",
   database: "employee_trackerDB",
-});
+}
+);
 
 connection.connect(function (err) {
   if (err) throw err;
@@ -21,7 +23,7 @@ function startPrompt() {
     .prompt([
       {
         type: "list",
-        message: "What would you like to do?",
+        message: "Please select a function?",
         name: "choice",
         choices: [
           "View All Employees?",
@@ -39,26 +41,21 @@ function startPrompt() {
         case "View All Employees?":
           viewAllEmployees();
           break;
-
         case "View All Employee's By Roles?":
           viewAllRoles();
           break;
         case "View all Emplyees By Deparments":
           viewAllDepartments();
           break;
-
         case "Add Employee?":
           addEmployee();
           break;
-
         case "Update Employee":
           updateEmployee();
           break;
-
         case "Add Role?":
           addRole();
           break;
-
         case "Add Department?":
           addDepartment();
           break;
@@ -130,23 +127,23 @@ function addEmployee() {
       {
         name: "firstname",
         type: "input",
-        message: "Enter their first name ",
+        message: "Enter the employees first name ",
       },
       {
         name: "lastname",
         type: "input",
-        message: "Enter their last name ",
+        message: "Enter the employees last name ",
       },
       {
         name: "role",
         type: "list",
-        message: "What is their role? ",
+        message: "What is the employee's role? ",
         choices: selectRole(),
       },
       {
         name: "choice",
         type: "rawlist",
-        message: "Whats their managers name?",
+        message: "What is the name of the employee's manager? ",
         choices: selectManager(),
       },
     ])
@@ -189,12 +186,12 @@ function updateEmployee() {
               }
               return lastName;
             },
-            message: "What is the Employee's last name? ",
+            message: "What is the employee's last name? ",
           },
           {
             name: "role",
             type: "rawlist",
-            message: "What is the Employees new title? ",
+            message: "What is the employee's new title? ",
             choices: selectRole(),
           },
         ])
@@ -228,12 +225,12 @@ function addRole() {
           {
             name: "Title",
             type: "input",
-            message: "What is the roles Title?",
+            message: "What is the title of the new role? ",
           },
           {
             name: "Salary",
             type: "input",
-            message: "What is the Salary?",
+            message: "What is the salary for the new role? ",
           },
         ])
         .then(function (res) {
@@ -260,7 +257,7 @@ function addDepartment() {
       {
         name: "name",
         type: "input",
-        message: "What Department would you like to add?",
+        message: "What Department would you like to add? ",
       },
     ])
     .then(function (res) {
