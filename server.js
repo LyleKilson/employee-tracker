@@ -26,13 +26,13 @@ function startPrompt() {
         message: "Please select a function?",
         name: "choice",
         choices: [
-          "View All Employees?",
-          "View All Employee's By Roles?",
+          "View All Employees",
+          "View All Employee's By Roles",
           "View all Emplyees By Deparments",
           "Update Employee",
-          "Add Employee?",
+          "Add Employee",
           "Add Role?",
-          "Add Department?",
+          "Add Department",
         ],
       },
     ])
