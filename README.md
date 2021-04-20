@@ -14,7 +14,6 @@ Developers frequently have to create interfaces that make it easy for non-develo
 ![Site](demo/preview.gif) 
 
 ## Preview Link
-Preivew Employee Tracker [here!](https://drive.google.com/file/d/1d6brxIc2are2IPAbBvEEdUHncvjwA4P-/vie
-
+Preivew Employee Tracker [here!](https://drive.google.com/file/d/1d6brxIc2are2IPAbBvEEdUHncvjwA4P-/view)
 ## Contributions 
 Made with big 🧠 's by **Kyle Wilson**
