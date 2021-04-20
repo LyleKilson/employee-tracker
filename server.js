@@ -2,15 +2,13 @@ const inquirer = require("inquirer");
 const mysql = require("mysql");
 const cTable = require("console.table");
 
-const connection = mysql.createConnection(
-    {
+const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
   password: "Winnipeg2012!",
   database: "employee_trackerDB",
-}
-);
+});
 
 connection.connect(function (err) {
   if (err) throw err;
@@ -23,7 +21,7 @@ function startPrompt() {
     .prompt([
       {
         type: "list",
-        message: "Please select a function?",
+        message: "What would you like to do?",
         name: "choice",
         choices: [
           "View All Employees",
@@ -31,32 +29,37 @@ function startPrompt() {
           "View all Emplyees By Deparments",
           "Update Employee",
           "Add Employee",
-          "Add Role?",
+          "Add Role",
           "Add Department",
         ],
       },
     ])
     .then(function (val) {
       switch (val.choice) {
-        case "View All Employees?":
+        case "View All Employees":
           viewAllEmployees();
           break;
-        case "View All Employee's By Roles?":
+
+        case "View All Employee's By Roles":
           viewAllRoles();
           break;
         case "View all Emplyees By Deparments":
           viewAllDepartments();
           break;
-        case "Add Employee?":
+
+        case "Add Employee":
           addEmployee();
           break;
+
         case "Update Employee":
           updateEmployee();
           break;
-        case "Add Role?":
+
+        case "Add Role":
           addRole();
           break;
-        case "Add Department?":
+
+        case "Add Department":
           addDepartment();
           break;
       }
@@ -127,23 +130,23 @@ function addEmployee() {
       {
         name: "firstname",
         type: "input",
-        message: "Enter the employees first name ",
+        message: "Enter their first name ",
       },
       {
         name: "lastname",
         type: "input",
-        message: "Enter the employees last name ",
+        message: "Enter their last name ",
       },
       {
         name: "role",
         type: "list",
-        message: "What is the employee's role? ",
+        message: "What is their role? ",
         choices: selectRole(),
       },
       {
         name: "choice",
         type: "rawlist",
-        message: "What is the name of the employee's manager? ",
+        message: "Whats their managers name?",
         choices: selectManager(),
       },
     ])
@@ -171,7 +174,6 @@ function updateEmployee() {
   connection.query(
     "SELECT employee.last_name, role.title FROM employee JOIN role ON employee.role_id = role.id;",
     function (err, res) {
-      // console.log(res)
       if (err) throw err;
       console.log(res);
       inquirer
@@ -186,12 +188,12 @@ function updateEmployee() {
               }
               return lastName;
             },
-            message: "What is the employee's last name? ",
+            message: "What is the Employee's last name? ",
           },
           {
             name: "role",
             type: "rawlist",
-            message: "What is the employee's new title? ",
+            message: "What is the Employees new title? ",
             choices: selectRole(),
           },
         ])
@@ -215,7 +217,7 @@ function updateEmployee() {
     }
   );
 }
-
+//============= Add Employee Role ==========================//
 function addRole() {
   connection.query(
     "SELECT role.title AS Title, role.salary AS Salary FROM role",
@@ -225,12 +227,12 @@ function addRole() {
           {
             name: "Title",
             type: "input",
-            message: "What is the title of the new role? ",
+            message: "What is the roles Title?",
           },
           {
             name: "Salary",
             type: "input",
-            message: "What is the salary for the new role? ",
+            message: "What is the Salary?",
           },
         ])
         .then(function (res) {
@@ -250,14 +252,14 @@ function addRole() {
     }
   );
 }
-
+//============= Add Department ==========================//
 function addDepartment() {
   inquirer
     .prompt([
       {
         name: "name",
         type: "input",
-        message: "What Department would you like to add? ",
+        message: "What Department would you like to add?",
       },
     ])
     .then(function (res) {
